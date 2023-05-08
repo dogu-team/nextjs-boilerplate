@@ -1,15 +1,10 @@
-// const fu = require('find-up');
-// const Dotenv = require('dotenv');
-// const fs = require('fs');
-// const yargs = require('yargs');
-// const yh = reuiqre('yargs/helpers');
-import fs from "fs";
-import { findUp } from "find-up";
-import * as Dotenv from "dotenv";
-import yargs from "yargs";
-import { hideBin } from "yargs/helpers";
+import fs from 'fs';
+import { findUp } from 'find-up';
+import * as Dotenv from 'dotenv';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
-const requiredEnvKeys = [];
+const requiredEnvKeys = ['DOGU_RUN_TYPE', 'NEXT_PUBLIC_ENV'];
 
 async function parseDotenv() {
   const envFilePath = await findUp(`.env`);
@@ -27,7 +22,7 @@ async function parseDotenv() {
 
   if (difference.length > 0) {
     throw new Error(
-      `[prerun] Env validation failed. ${difference.join()} should exist.`
+      `[prerun] Env validation failed. ${difference.join()} should exist.`,
     );
   }
 
@@ -39,7 +34,7 @@ function writeEnv(parsedEnv) {
   const content = `window.__ENV = ${JSON.stringify(parsedEnv)}`;
   fs.writeFileSync(scriptFilePath, content);
   console.info(
-    `[prerun] Write environment to ${scriptFilePath} content: ${content}`
+    `[prerun] Write environment to ${scriptFilePath} content: ${content}`,
   );
 }
 
@@ -52,31 +47,31 @@ async function copyEnv(appEnv) {
 
 async function writeRobotsText(runType) {
   const robotsTxtFilePath = `${fs.realpathSync(
-    process.cwd()
+    process.cwd(),
   )}/public/robots.txt`;
   const content =
-    runType === "production"
+    runType === 'production'
       ? `User-agent: *\nAllow: /`
       : `User-agent: *\nDisallow: /`;
   fs.writeFileSync(robotsTxtFilePath, content);
   console.info(
-    `[prerun] Write robots.txt to ${robotsTxtFilePath} content: ${content}`
+    `[prerun] Write robots.txt to ${robotsTxtFilePath} content: ${content}`,
   );
 }
 
 yargs(hideBin(process.argv))
   .command(
-    "start",
-    "Create Next.js runtime environment js and write robots.txt",
+    'start',
+    'Create Next.js runtime environment js and write robots.txt',
     function builder(y) {
-      return y.option("env", {
-        alias: "e",
-        type: "string",
-        description: "Environment name(ex: production, development)",
+      return y.option('env', {
+        alias: 'e',
+        type: 'string',
+        description: 'Environment name(ex: production, development)',
       });
     },
     async function handler(args) {
-      const appEnv = "";
+      const appEnv = '';
       console.info(`[env] App environment: ${appEnv}`);
 
       const parsedEnv = await parseDotenv();
@@ -85,6 +80,6 @@ yargs(hideBin(process.argv))
       writeRobotsText(parsedEnv.DOGU_RUN_TYPE);
 
       return parsedEnv;
-    }
+    },
   )
   .parse();

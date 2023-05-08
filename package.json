@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node ./prerun.mjs start && next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node ./prerun.mjs start && next start",
     "lint": "next lint"
   },
   "dependencies": {
