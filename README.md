@@ -5,7 +5,7 @@ This repository is for dogu's web-front nextjs boilerplate.
 ## How to use?
 
 ```sh
-npx create-next-app --example [dogu-repo-url]
+npx create-next-app --example https://github.com/dogu-team/nextjs-boilerplate
 ```
 
 ## What's in here?
