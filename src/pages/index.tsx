@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import useTranslation from 'next-translate/useTranslation';
+import styled from 'styled-components';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -12,10 +13,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
+      <StyledBox>
         <h1>Welcome to Dogu Nextjs Boilerplate</h1>
         <p>{t('common:hello')}</p>
-      </div>
+      </StyledBox>
     </>
   );
 }
+
+const StyledBox = styled.div`
+  display: flex;
+`;
