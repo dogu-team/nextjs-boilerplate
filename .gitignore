@@ -46,4 +46,5 @@ public/robots.txt
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+!.yarn/install-state.gz
 yarn-error.log
