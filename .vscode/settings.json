@@ -1,5 +1,4 @@
-
-{  
+{
   "[javascript]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
@@ -24,7 +23,9 @@
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "prettier.documentSelectors": ["*.ts, *.json"],
+  "prettier.documentSelectors": [
+    "*.ts, *.json"
+  ],
   "debug.javascript.autoAttachFilter": "onlyWithFlag",
   "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
@@ -41,8 +42,18 @@
   "eslint.lintTask.options": ".ts",
   "eslint.nodePath": ".yarn/sdks",
   "eslint.packageManager": "yarn",
-  "eslint.probe": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html", "vue", "markdown"],
-  "eslint.workingDirectories": ["."],
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown"
+  ],
+  "eslint.workingDirectories": [
+    "."
+  ],
   "git.rebaseWhenSync": true,
   "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
   "search.exclude": {
@@ -54,5 +65,5 @@
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "files.saveConflictResolution": "overwriteFileOnDisk",
-  "eslint.run": "onSave",
+  "eslint.run": "onSave"
 }
